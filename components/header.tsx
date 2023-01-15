@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import avatar from "public/avatar.png";
+
 import NavLink from "./NavLink";
 import ThemeSwitcher from "./ThemeSwitcher";
 
@@ -16,9 +16,11 @@ export default function Header() {
       <nav className="px-4 md:px-6 py-2 max-w-[700px] mx-auto flex justify-between items-center ">
         <Link href="/" className="hidden shrink-0 sm:block">
           <Image
-            src={avatar}
+            src="/avatar.png"
             alt="Jack Willars avatar"
             className="w-8 h-8 rounded-full"
+            width={32}
+            height={32}
             priority
           />
         </Link>

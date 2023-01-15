@@ -2,7 +2,6 @@ import Link from "components/Link";
 import Section from "components/Section";
 import Workplaces from "components/Workplaces";
 
-import avatar from "public/avatar.png";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
 import siteData from "data/siteData";
@@ -30,7 +29,7 @@ export default function About({}) {
       <div className="flex flex-col gap-16 md:gap-24">
         <div className="-mb-8 sm:hidden animate-in">
           <Image
-            src={avatar}
+            src="/avatar.png"
             width={48}
             height={48}
             alt="avatar of Jack Willars"
