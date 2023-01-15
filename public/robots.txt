@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://jparw.xyz/sitemap.xml
