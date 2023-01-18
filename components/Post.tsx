@@ -3,9 +3,9 @@ import { formatDate } from 'lib/formatdate';
 import Image from 'next/image';
 import React from 'react';
 
-import Section from './section';
 import type { Post as PostTypes } from '.contentlayer/generated';
 import Link from 'next/link';
+import Section from './section';
 
 type PostProps = {
   post: PostTypes;
