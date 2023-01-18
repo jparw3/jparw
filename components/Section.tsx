@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
-import cn from "clsx";
+import cn from 'clsx';
+import { ReactNode } from 'react';
 
 type SectionProps = {
   heading: string;
-  headingAlignment?: "right" | "left";
+  headingAlignment?: 'right' | 'left';
   children: ReactNode;
   className?: string;
 };
@@ -12,7 +12,7 @@ export default function Section({
   heading,
   headingAlignment,
   children,
-  className,
+  className
 }: SectionProps) {
   return (
     <section
@@ -20,8 +20,8 @@ export default function Section({
     >
       <h2
         className={cn(
-          "md:w-28 text-secondary shrink-0",
-          headingAlignment === "right" && "md:text-right"
+          'md:w-28 text-secondary shrink-0',
+          headingAlignment === 'right' && 'md:text-right'
         )}
       >
         {heading}

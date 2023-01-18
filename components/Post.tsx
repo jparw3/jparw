@@ -1,13 +1,14 @@
-import { formatDate } from "lib/formatdate";
-import type { Post } from ".contentlayer/generated";
-import Section from "./Section";
-import Link from "./Link";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import React from "react";
+import { motion } from 'framer-motion';
+import { formatDate } from 'lib/formatdate';
+import Image from 'next/image';
+import React from 'react';
+
+import Link from './link';
+import Section from './section';
+import type { Post as PostTypes } from '.contentlayer/generated';
 
 type PostProps = {
-  post: Post;
+  post: PostTypes;
   mousePosition?: {
     x: number;
     y: number;
@@ -18,7 +19,7 @@ export default function Post({ post, mousePosition }: PostProps) {
   const { publishedAt, slug, title, image } = post;
   const publishDate = new Date(publishedAt);
   const showNewBadge =
-    Math.abs(new Date(publishDate).getTime() - new Date().getTime()) /
+    Math.abs(new Date(publishDate).getTime() - Date.now()) /
       (24 * 60 * 60 * 1000) <
     30;
   const imageHeight = 150;
@@ -32,10 +33,10 @@ export default function Post({ post, mousePosition }: PostProps) {
           <motion.div
             animate={{
               top: mousePosition.y - imageHeight - imageOffset,
-              left: mousePosition.x + imageOffset,
+              left: mousePosition.x + imageOffset
             }}
             initial={false}
-            transition={{ ease: "easeOut" }}
+            transition={{ ease: 'easeOut' }}
             style={{ width: imageWidth, height: imageHeight }}
             className="absolute z-10 hidden overflow-hidden rounded shadow-sm pointer-events-none sm:group-hover:block bg-primary"
           >

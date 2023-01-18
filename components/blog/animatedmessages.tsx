@@ -1,37 +1,38 @@
-import { useEffect, useState } from "react";
-import cn from "clsx";
-import { motion, AnimatePresence } from "framer-motion";
-import useInterval from "hooks/useinterval";
-import randomWords from "random-words";
-import styles from "./messages.module.scss";
+import cn from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import useInterval from 'hooks/useinterval';
+import randomWords from 'random-words';
+import { useEffect, useState } from 'react';
 
-const messageConfig = { min: 3, max: 10, join: " " };
+import styles from './messages.module.scss';
+
+const messageConfig = { min: 3, max: 10, join: ' ' };
 const initialMessages = [
   { text: randomWords(messageConfig), sent: true },
   { text: randomWords(messageConfig) },
   { text: randomWords(messageConfig), sent: true },
   { text: randomWords(messageConfig) },
   { text: randomWords(messageConfig) },
-  { text: randomWords(messageConfig), sent: true },
+  { text: randomWords(messageConfig), sent: true }
 ];
 
 const transition = {
-  type: "spring",
+  type: 'spring',
   stiffness: 200,
   mass: 0.2,
-  damping: 20,
+  damping: 20
 };
 
 const variants = {
   initial: {
     opacity: 0,
-    y: 300,
+    y: 300
   },
   enter: {
     opacity: 1,
     y: 0,
-    transition,
-  },
+    transition
+  }
 };
 
 const Messages = (): JSX.Element => {
@@ -43,11 +44,11 @@ const Messages = (): JSX.Element => {
   }, []);
 
   useInterval(() => {
-    setMessages((curr) => {
+    setMessages(curr => {
       const first = curr.shift(); // eslint-disable-line
       return [
         ...curr,
-        { text: randomWords(messageConfig), sent: Math.random() > 0.5 },
+        { text: randomWords(messageConfig), sent: Math.random() > 0.5 }
       ];
     });
   }, 2000);

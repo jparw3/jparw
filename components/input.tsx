@@ -1,5 +1,5 @@
-import { forwardRef, InputHTMLAttributes, ReactNode } from "react";
-import cn from "clsx";
+import cn from 'clsx';
+import { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 type InputProps = {
   id: string;
@@ -13,13 +13,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function MyInput(
   props,
   ref
 ) {
-  const { type = "text", pfix, suffix, id, error, ...otherProps } = props;
+  const { type = 'text', pfix, suffix, id, error, ...otherProps } = props;
   return (
     <div className="flex flex-col gap-1">
       <div
         className={cn(
-          error ? "border-red-600" : "",
-          "flex items-center rounded-full bg-secondary w-fit focus-within:outline"
+          error ? 'border-red-600' : '',
+          'flex items-center rounded-full bg-secondary w-fit focus-within:outline'
         )}
       >
         {pfix && (

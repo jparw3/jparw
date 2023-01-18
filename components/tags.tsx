@@ -1,5 +1,6 @@
-import slugify from "slugify";
-import Link from "./Link";
+import slugify from 'slugify';
+
+import Link from './link';
 
 type TagsProps = {
   tags: string[];
@@ -12,7 +13,7 @@ const Tags = ({ tags }: TagsProps): JSX.Element | null => {
   return (
     <div className="flex justify-center">
       <ul className="flex gap-6 animated-list">
-        {tags.map((tag) => {
+        {tags.map(tag => {
           return (
             <li key={tag} className="transition-opacity">
               <Link

@@ -1,16 +1,17 @@
-import { pick } from "@contentlayer/client";
-import { useMDXComponent } from "next-contentlayer/hooks";
-import { allPosts, Post as PostType } from ".contentlayer/generated";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { NextSeo } from "next-seo";
+import { pick } from '@contentlayer/client';
+import Parallax from 'components/blog/parallax';
+import Link from 'components/link';
+import MDXComponents from 'components/mdx-components';
+import PostList from 'components/postlist';
+import Tags from 'components/tags';
+import { formatDate } from 'lib/formatdate';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Image from 'next/image';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import { NextSeo } from 'next-seo';
+import * as React from 'react';
 
-import { formatDate } from "lib/formatdate";
-import PostList from "components/postlist";
-import Link from "components/Link";
-import Image from "next/image";
-import Tags from "components/tags";
-import MDXComponents from "components/MDXComponents";
-import Parallax from "components/blog/parallax";
+import { allPosts, Post as PostType } from '.contentlayer/generated';
 
 type PostProps = {
   post: PostType;
@@ -33,19 +34,19 @@ export default function Post({ post, related }: PostProps) {
           title: seoTitle,
           url,
           description: seoDesc,
-          site_name: "Jack Willars",
-          type: "article",
+          site_name: 'Jack Willars',
+          type: 'article',
           article: {
             publishedTime: post.publishedAt,
             modifiedTime: post.updatedAt,
-            authors: ["https://jparw.xyz"],
-          },
+            authors: ['https://jparw.xyz']
+          }
         }}
       />
 
       <div className="flex flex-col gap-20">
         <article>
-          {post.slug === "spring-parallax-framer-motion-guide" ? (
+          {post.slug === 'spring-parallax-framer-motion-guide' ? (
             <div className="relative h-0 pb-[50%] bg-[#00000c] overflow-hidden rounded-xl">
               <div className="absolute inset-0">
                 <Parallax offset={100}>
@@ -86,7 +87,7 @@ export default function Post({ post, related }: PostProps) {
               <time dateTime={post.publishedAt}>
                 {formatDate(post.publishedAt)}
               </time>
-              {post.updatedAt ? ` (Updated ${formatDate(post.updatedAt)})` : ""}{" "}
+              {post.updatedAt ? ` (Updated ${formatDate(post.updatedAt)})` : ''}{' '}
             </p>
           </div>
           <div className="h-8" />
@@ -97,7 +98,7 @@ export default function Post({ post, related }: PostProps) {
 
         <Tags tags={post.tags} />
 
-        {related.length ? (
+        {related.length > 0 ? (
           <div className="flex flex-col items-start gap-10">
             <h3 className="text-xl">Related posts</h3>
             <div className="will-change-transform">
@@ -115,27 +116,27 @@ export default function Post({ post, related }: PostProps) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: allPosts.map((p) => ({ params: { slug: p.slug } })),
-    fallback: false,
+    paths: allPosts.map(p => ({ params: { slug: p.slug } })),
+    fallback: false
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = allPosts.find((p) => p.slug === params?.slug);
+  const post = allPosts.find(p => p.slug === params?.slug);
   const related = allPosts
     /* remove current post */
-    .filter((p) => p.slug !== params?.slug)
+    .filter(p => p.slug !== params?.slug)
     /* Find other posts where tags are matching */
-    .filter((p) => p.tags?.some((tag: string) => post?.tags?.includes(tag)))
+    .filter(p => p.tags?.some((tag: string) => post?.tags?.includes(tag)))
     /* return the first three */
     .filter((_, i) => i < 3)
     /* only return what's needed to render the list */
-    .map((p) => pick(p, ["slug", "title", "summary", "publishedAt", "image"]));
+    .map(p => pick(p, ['slug', 'title', 'summary', 'publishedAt', 'image']));
 
   return {
     props: {
       post,
-      related,
-    },
+      related
+    }
   };
 };

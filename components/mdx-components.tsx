@@ -1,7 +1,7 @@
-import CustomImage from "components/blog/image";
-import Video from "components/blog/video";
-import Link from "components/Link";
-import Warning from "components/warning";
+import CustomImage from 'components/blog/image';
+import Video from 'components/blog/video';
+import Link from 'components/link';
+import Warning from 'components/warning';
 
 interface CustomLinkProps
   extends React.DetailedHTMLProps<
@@ -9,9 +9,9 @@ interface CustomLinkProps
     HTMLAnchorElement
   > {}
 
-const CustomLink: React.FC<CustomLinkProps> = (props) => {
+const CustomLink: React.FC<CustomLinkProps> = props => {
   const href = props?.href;
-  const isInternalLink = href && (href.startsWith("/") || href.startsWith("#"));
+  const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternalLink) {
     return (
@@ -29,7 +29,7 @@ const MDXComponents = {
   Video: Video,
   a: CustomLink,
   Link: CustomLink,
-  Warning: Warning,
+  Warning: Warning
 };
 
 export default MDXComponents;

@@ -1,12 +1,11 @@
-import { GetStaticProps } from "next";
-import { allPosts, allProjects, Post, Project } from ".contentlayer/generated";
-import { pick } from "@contentlayer/client";
+import { pick } from '@contentlayer/client';
+import Link from 'components/link';
+import PostList from 'components/postlist';
+import Section from 'components/section';
+import siteData from 'data/siteData';
+import { GetStaticProps } from 'next';
 
-import siteData from "data/siteData";
-
-import Link from "components/Link";
-import Section from "components/Section";
-import PostList from "components/postlist";
+import { allPosts, allProjects, Post, Project } from '.contentlayer/generated';
 
 type HomeProps = {
   posts: Post[];
@@ -21,18 +20,18 @@ export default function Home({ posts, projects }: HomeProps) {
           <h1 className="animate-in">{siteData.name}</h1>
           <p
             className="text-secondary animate-in"
-            style={{ "--index": 1 } as React.CSSProperties}
+            style={{ '--index': 1 } as React.CSSProperties}
           >
             I design & build interfaces
           </p>
         </div>
         <div
           className="flex flex-col gap-4 animate-in"
-          style={{ "--index": 2 } as React.CSSProperties}
+          style={{ '--index': 2 } as React.CSSProperties}
         >
           <h2>Selected projects</h2>
           <ul className="flex flex-col gap-16">
-            {projects.map((project) => (
+            {projects.map(project => (
               <li key={project.title}>
                 <Section heading={project.time}>
                   <div className="flex flex-col gap-5">
@@ -51,7 +50,7 @@ export default function Home({ posts, projects }: HomeProps) {
         </div>
         <div
           className="flex flex-col items-start gap-8 animate-in"
-          style={{ "--index": 3 } as React.CSSProperties}
+          style={{ '--index': 3 } as React.CSSProperties}
         >
           <h2>Selected posts</h2>
           <PostList posts={posts} />
@@ -71,13 +70,13 @@ export const getStaticProps: GetStaticProps = async () => {
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
     .filter((_, i) => i < 4)
-    .map((post) => pick(post, ["slug", "title", "publishedAt", "image"]));
+    .map(post => pick(post, ['slug', 'title', 'publishedAt', 'image']));
 
-  const projects = allProjects.map((post) =>
-    pick(post, ["slug", "title", "description", "time"])
+  const projects = allProjects.map(post =>
+    pick(post, ['slug', 'title', 'description', 'time'])
   );
 
   return {
-    props: { posts, projects },
+    props: { posts, projects }
   };
 };

@@ -1,16 +1,16 @@
-import Link from "components/Link";
-import Section from "components/Section";
-import Workplaces from "components/Workplaces";
+import Link from 'components/link';
+import Section from 'components/section';
+import Workplaces from 'components/workplaces';
+import siteData from 'data/siteData';
+import Image from 'next/image';
+import { NextSeo } from 'next-seo';
+import React from 'react';
 
-import { NextSeo } from "next-seo";
-import Image from "next/image";
-import siteData from "data/siteData";
-
-const seoTitle = "About | Jack Willars";
+const seoTitle = 'About | Jack Willars';
 const seoDesc =
-  "A fullstack developer that loves to build great products with delightful interfaces.";
+  'A fullstack developer that loves to build great products with delightful interfaces.';
 
-export default function About({}) {
+export default function About() {
   return (
     <>
       <NextSeo
@@ -20,10 +20,10 @@ export default function About({}) {
           title: seoTitle,
           description: seoDesc,
           url: `https://jparw.xyz/about/`,
-          site_name: "Jack Willars",
+          site_name: 'Jack Willars'
         }}
         twitter={{
-          cardType: "summary_large_image",
+          cardType: 'summary_large_image'
         }}
       />
       <div className="flex flex-col gap-16 md:gap-24">
@@ -37,7 +37,7 @@ export default function About({}) {
         </div>
         <div
           className="flex flex-col gap-16 animate-in sm:animate-none md:gap-24"
-          style={{ "--index": 2 } as React.CSSProperties}
+          style={{ '--index': 2 } as React.CSSProperties}
         >
           <Section heading="About me" headingAlignment="right">
             <div className="flex flex-col gap-6">
@@ -47,13 +47,13 @@ export default function About({}) {
                 delightful interfaces.
               </p>
               <p>
-                Currently working at{" "}
+                Currently working at{' '}
                 <Link href="https://www.bespokesoftware.io/">BSPOKE</Link>,
                 Learning as much as I can about the industry and working with
-                brilliant people. Before that I worked at the law firm{" "}
+                brilliant people. Before that I worked at the law firm{' '}
                 <Link href="https://www.hegarty.co.uk/">
                   Hegarty LLP Solicitors
-                </Link>{" "}
+                </Link>{' '}
                 as an IT Apprentice.
               </p>
               <p>
@@ -64,7 +64,7 @@ export default function About({}) {
           </Section>
           <Section heading="Connect" headingAlignment="right">
             <ul className="flex gap-6 animated-list">
-              {siteData.shortConnectedLinks.map((link) => (
+              {siteData.shortConnectedLinks.map(link => (
                 <li className="transition-opacity" key={link.label}>
                   <Link href={link.href}>{link.label}</Link>
                 </li>

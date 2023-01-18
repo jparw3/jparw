@@ -1,4 +1,4 @@
-import styles from "./nowplaying.module.scss";
+import styles from './nowplaying.module.scss';
 
 export const NowPlayingIcon = () => (
   <div className={styles.icon}>

@@ -1,6 +1,6 @@
 export default function Video({
   src,
-  autoPlay = true,
+  autoPlay = true
 }: {
   src: string;
   autoPlay?: boolean;

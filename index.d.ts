@@ -1,1 +1,1 @@
-declare module "remark-code-titles";
+declare module 'remark-code-titles';

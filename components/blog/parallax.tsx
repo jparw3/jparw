@@ -1,11 +1,11 @@
-import { useState, useRef, useLayoutEffect, ReactNode } from "react";
 import {
   motion,
-  useViewportScroll,
-  useTransform,
-  useSpring,
   useReducedMotion,
-} from "framer-motion";
+  useSpring,
+  useTransform,
+  useViewportScroll
+} from 'framer-motion';
+import { ReactNode, useLayoutEffect, useRef, useState } from 'react';
 
 type ParallaxProps = {
   children: ReactNode;
@@ -18,7 +18,7 @@ const Parallax = ({
   children,
   offset = 50,
   clampInitial,
-  clampFinal,
+  clampFinal
 }: ParallaxProps): JSX.Element => {
   const prefersReducedMotion = useReducedMotion();
   const [elementTop, setElementTop] = useState(0);
@@ -48,8 +48,8 @@ const Parallax = ({
       setClientHeight(window.innerHeight);
     };
     onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, [ref]);
 
   // Don't parallax if the user has "reduced motion" enabled

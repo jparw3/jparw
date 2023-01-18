@@ -1,8 +1,7 @@
-import Link from "components/Link";
-import Image, { StaticImageData } from "next/image";
-import { Fragment } from "react";
+import Link from 'components/link';
+import Image, { StaticImageData } from 'next/image';
 
-type Workplace = {
+type WorkplaceTypes = {
   title: string;
   description: string;
   imageSrc: string | StaticImageData;
@@ -10,7 +9,13 @@ type Workplace = {
   link?: string;
 };
 
-function Workplace({ title, description, imageSrc, time, link }: Workplace) {
+function Workplace({
+  title,
+  description,
+  imageSrc,
+  time,
+  link
+}: WorkplaceTypes) {
   const content = (
     <>
       <div className="flex items-center gap-4">
@@ -22,7 +27,7 @@ function Workplace({ title, description, imageSrc, time, link }: Workplace) {
           className="rounded-full"
         />
         <div className="flex flex-col gap-px">
-          <p className={link ? "external-arrow" : ""}>{title}</p>
+          <p className={link ? 'external-arrow' : ''}>{title}</p>
           <p className="text-secondary">{description}</p>
         </div>
       </div>
@@ -45,7 +50,7 @@ function Workplace({ title, description, imageSrc, time, link }: Workplace) {
   );
 }
 
-export default function Workplaces({ items }: { items: Workplace[] }) {
+export default function Workplaces({ items }: { items: WorkplaceTypes[] }) {
   return (
     <ul className="flex flex-col gap-8 animated-list">
       {items.map(Workplace)}

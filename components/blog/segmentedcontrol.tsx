@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { motion, AnimateSharedLayout } from "framer-motion";
-import styles from "./segmentedcontrol.module.scss";
+import { AnimateSharedLayout, motion } from 'framer-motion';
+import { useState } from 'react';
+
+import styles from './segmentedcontrol.module.scss';
 
 type SegmentedControlProps = {
   items: Array<string>;

@@ -1,13 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
-import NavLink from "./NavLink";
-import ThemeSwitcher from "./ThemeSwitcher";
+import NavLink from './navLink';
+import ThemeSwitcher from './themeSwitcher';
 
 const links = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Blog', href: '/blog' }
 ];
 
 export default function Header() {
@@ -25,7 +25,7 @@ export default function Header() {
           />
         </Link>
         <ul className="flex items-center gap-6">
-          {links.map((link) => (
+          {links.map(link => (
             <li key={link.href}>
               <NavLink href={link.href}>{link.label}</NavLink>
             </li>

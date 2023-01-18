@@ -1,5 +1,5 @@
-import Link from "components/Link";
-import Head from "next/head";
+import Link from 'components/link';
+import Head from 'next/head';
 
 const Custom404 = (): JSX.Element => (
   <>

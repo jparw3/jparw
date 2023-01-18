@@ -1,12 +1,13 @@
-import { ReactNode } from "react";
-import { IconInfo } from "./Icons";
+import { ReactNode } from 'react';
+
+import { IconInfo } from './icons';
 
 const Warning = ({
   children,
-  type,
+  type
 }: {
   children: ReactNode;
-  type: "warning" | "info";
+  type: 'warning' | 'info';
 }): JSX.Element => (
   <div className="flex gap-1 px-4 py-3 rounded-lg mt-7 bg-secondary">
     <IconInfo className="w-6 h-6 shrink-0" />

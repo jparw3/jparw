@@ -1,5 +1,5 @@
-import Image from "next/image";
-import cn from "clsx";
+import cn from 'clsx';
+import Image from 'next/image';
 
 type CustomImageProps = {
   src: string;
@@ -20,17 +20,17 @@ export default function CustomImage({
   caption,
   breakout,
   rounded,
-  priority,
+  priority
 }: CustomImageProps) {
   return (
     <div
       className={cn(
-        "not-prose w-full",
-        breakout ? "bg-tertiary" : "",
-        (rounded || breakout) && "rounded-2xl overflow-hidden"
+        'not-prose w-full',
+        breakout ? 'bg-tertiary' : '',
+        (rounded || breakout) && 'rounded-2xl overflow-hidden'
       )}
     >
-      <figure className={cn("flex flex-col", breakout ? "gap-4" : "gap-2")}>
+      <figure className={cn('flex flex-col', breakout ? 'gap-4' : 'gap-2')}>
         <Image
           src={src}
           width={width}
@@ -42,8 +42,8 @@ export default function CustomImage({
         {caption && (
           <figcaption
             className={cn(
-              "text-sm text-secondary",
-              breakout && "max-w-[700px] px-6 w-full mx-auto "
+              'text-sm text-secondary',
+              breakout && 'max-w-[700px] px-6 w-full mx-auto '
             )}
           >
             {caption}

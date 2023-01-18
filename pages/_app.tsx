@@ -1,48 +1,60 @@
-import { ReactElement, ReactNode, useEffect } from "react";
-import { Analytics } from "@vercel/analytics/react";
-import { ThemeProvider } from "next-themes";
-import Head from "next/head";
-import { AppProps } from "next/app";
-import { useRouter } from "next/router";
-import { Inter } from "@next/font/google";
+import '../styles/globals.css';
 
-import SEO from "components/seo";
-
-import "../styles/globals.css";
-import Header from "components/header";
-import { NextPage } from "next";
+import { Inter } from '@next/font/google';
+import { Analytics } from '@vercel/analytics/react';
+import Header from 'components/header';
+import SEO from 'components/seo';
+import { NextPage } from 'next';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import { ThemeProvider } from 'next-themes';
+import {
+  JSXElementConstructor,
+  ReactElement,
+  ReactFragment,
+  ReactNode,
+  ReactPortal
+} from 'react';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-  getLayout?: (page: ReactElement) => ReactNode;
+  getLayout?: () => ReactNode;
 };
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export default function MyApp({
   Component,
-  pageProps,
+  pageProps
 }: AppPropsWithLayout): JSX.Element {
   const getLayout =
     Component.getLayout ??
-    ((page) => (
+    ((
+      page:
+        | string
+        | number
+        | boolean
+        | ReactElement<any, string | JSXElementConstructor<any>>
+        | ReactFragment
+        | ReactPortal
+        | null
+        | undefined
+    ) => (
       <main className="px-4 md:px-6 pt-20 pb-24 md:pb-44 max-w-[700px] mx-auto ring-offset-primary">
         {page}
       </main>
     ));
 
-  const router = useRouter();
-
   return (
     <ThemeProvider
       attribute="class"
       value={{
-        light: "light-theme",
-        dark: "dark-theme",
-        arc: "arc-theme",
+        light: 'light-theme',
+        dark: 'dark-theme',
+        arc: 'arc-theme'
       }}
     >
       <style jsx global>{`

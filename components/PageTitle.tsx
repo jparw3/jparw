@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 // Workaroud until next.js app dir supports updating title on next/link navigation
 // https://beta.nextjs.org/docs/routing/pages-and-layouts

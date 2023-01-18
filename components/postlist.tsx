@@ -1,6 +1,7 @@
-import type { Post as PostType } from ".contentlayer/generated";
-import Post from "components/Post";
-import React, { useRef, useState } from "react";
+import Post from 'components/post';
+import React, { useRef, useState } from 'react';
+
+import type { Post as PostType } from '.contentlayer/generated';
 
 function getRelativeCoordinates(
   event: React.MouseEvent<HTMLUListElement>,
@@ -8,14 +9,14 @@ function getRelativeCoordinates(
 ) {
   const position = {
     x: event.pageX,
-    y: event.pageY,
+    y: event.pageY
   };
 
   const offset = {
     left: referenceElement.offsetLeft,
     top: referenceElement.clientTop,
     width: referenceElement.clientWidth,
-    height: referenceElement.clientHeight,
+    height: referenceElement.clientHeight
   };
 
   let reference = referenceElement.offsetParent;
@@ -28,7 +29,7 @@ function getRelativeCoordinates(
 
   return {
     x: position.x - offset.left,
-    y: position.y - offset.top,
+    y: position.y - offset.top
   };
 }
 
@@ -39,7 +40,7 @@ type PostListProps = {
 export default function PostList({ posts }: PostListProps) {
   const [mousePosition, setMousePosition] = useState({
     x: 240,
-    y: 0,
+    y: 0
   });
   const listRef = useRef(null);
   const handleMouseMove = (e: React.MouseEvent<HTMLUListElement>) => {
@@ -49,11 +50,11 @@ export default function PostList({ posts }: PostListProps) {
   return (
     <ul
       ref={listRef}
-      onMouseMove={(e) => handleMouseMove(e)}
+      onMouseMove={e => handleMouseMove(e)}
       className="flex flex-col animated-list"
     >
       {posts.length === 0 && <p>No posts found</p>}
-      {posts.map((post) => (
+      {posts.map(post => (
         <Post key={post.slug} post={post} mousePosition={mousePosition} />
       ))}
     </ul>
