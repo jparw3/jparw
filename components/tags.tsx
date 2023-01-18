@@ -11,8 +11,8 @@ const Tags = ({ tags }: TagsProps): JSX.Element | null => {
     return null;
   }
   return (
-    <div className="flex justify-center">
-      <ul className="flex gap-6 animated-list">
+    <div className="flex flex-col justify-start md:justify-center">
+      <ul className="flex flex-col gap-6 md:flex-row animated-list">
         {tags.map(tag => {
           return (
             <li key={tag} className="transition-opacity">
