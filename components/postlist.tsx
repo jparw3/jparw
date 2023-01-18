@@ -1,7 +1,7 @@
-import Post from 'components/post';
 import React, { useRef, useState } from 'react';
 
 import type { Post as PostType } from '.contentlayer/generated';
+import PostCard from 'components/post';
 
 function getRelativeCoordinates(
   event: React.MouseEvent<HTMLUListElement>,
@@ -55,7 +55,7 @@ export default function PostList({ posts }: PostListProps) {
     >
       {posts.length === 0 && <p>No posts found</p>}
       {posts.map(post => (
-        <Post key={post.slug} post={post} mousePosition={mousePosition} />
+        <PostCard key={post.slug} post={post} mousePosition={mousePosition} />
       ))}
     </ul>
   );

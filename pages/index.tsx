@@ -1,11 +1,11 @@
 import { pick } from '@contentlayer/client';
 import Link from 'components/link';
 import PostList from 'components/postlist';
-import Section from 'components/section';
 import siteData from 'data/siteData';
 import { GetStaticProps } from 'next';
 
 import { allPosts, allProjects, Post, Project } from '.contentlayer/generated';
+import Section from 'components/section';
 
 type HomeProps = {
   posts: Post[];
