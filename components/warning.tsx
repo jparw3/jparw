@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { IconInfo } from './icons';
+import { IconInfo } from 'components/icons';
 
 const Warning = ({
   children,

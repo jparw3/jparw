@@ -5,7 +5,7 @@ import React from 'react';
 
 import type { Post as PostTypes } from '.contentlayer/generated';
 import Link from 'next/link';
-import Section from './section';
+import Section from 'components/section';
 
 type PostProps = {
   post: PostTypes;

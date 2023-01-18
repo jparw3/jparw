@@ -11,7 +11,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks';
 import { NextSeo } from 'next-seo';
 import * as React from 'react';
 
-import { allPosts, Post as PostType } from '.contentlayer/generated';
+import { allPosts, Post as PostType } from '../../.contentlayer/generated';
 
 type PostProps = {
   post: PostType;

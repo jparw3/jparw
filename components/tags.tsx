@@ -1,6 +1,6 @@
 import slugify from 'slugify';
 
-import Link from './link';
+import Link from 'components/link';
 
 type TagsProps = {
   tags: string[];
