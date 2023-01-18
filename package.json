@@ -21,7 +21,7 @@
     "@contentlayer/client": "^0.2.9",
     "@headlessui/react": "^1.7.7",
     "@mapbox/polyline": "^1.1.1",
-    "@next/font": "^13.1.1",
+    "@next/font": "^13.1.2",
     "@radix-ui/colors": "^0.1.8",
     "@vercel/analytics": "^0.1.6",
     "clsx": "^1.2.1",
