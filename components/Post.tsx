@@ -3,9 +3,9 @@ import { formatDate } from 'lib/formatdate';
 import Image from 'next/image';
 import React from 'react';
 
-import Link from './link';
 import Section from './section';
 import type { Post as PostTypes } from '.contentlayer/generated';
+import Link from 'next/link';
 
 type PostProps = {
   post: PostTypes;
@@ -50,12 +50,14 @@ export default function Post({ post, mousePosition }: PostProps) {
         )}
         <Section heading={formatDate(publishedAt)}>
           <Link href={`/blog/${slug}`}>
-            {title}
-            {showNewBadge && (
-              <span className="inline-block px-1.5 py-[1px] relative -top-[2px] font-bold ml-2 text-[10px] uppercase rounded-full brand-gradient text-white">
-                New
-              </span>
-            )}
+            <>
+              {title}
+              {showNewBadge && (
+                <span className="inline-block px-1.5 py-[1px] relative -top-[2px] font-bold ml-2 text-[10px] uppercase rounded-full brand-gradient text-white">
+                  New
+                </span>
+              )}
+            </>
           </Link>
         </Section>
       </div>
