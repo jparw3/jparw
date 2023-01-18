@@ -1,6 +1,6 @@
 import { formatDate } from 'lib/formatdate';
 import type { Post } from '.contentlayer/generated';
-import Section from './section';
+import Section from '../components/section';
 import Link from './link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
