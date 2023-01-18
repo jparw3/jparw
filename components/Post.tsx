@@ -1,10 +1,8 @@
 import { formatDate } from 'lib/formatdate';
 import type { Post } from '.contentlayer/generated';
-import Section from '../components/section';
 import Link from './link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import React from 'react';
 
 type PostProps = {
   post: Post;
@@ -47,7 +45,11 @@ export default function PostCard({ post, mousePosition }: PostProps) {
             />
           </motion.div>
         )}
-        <Section heading={formatDate(publishedAt)}>
+
+        <section className="flex flex-col gap-1 md:flex-row md:gap-9">
+          <h2 className=" md:w-28 text-secondary shrink-0">
+            {formatDate(publishedAt)}
+          </h2>
           <Link href={`/blog/${slug}`}>
             {title}
             {showNewBadge && (
@@ -56,7 +58,7 @@ export default function PostCard({ post, mousePosition }: PostProps) {
               </span>
             )}
           </Link>
-        </Section>
+        </section>
       </div>
     </li>
   );
