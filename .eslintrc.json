@@ -47,14 +47,6 @@
     "unicorn/prevent-abbreviations": 0,
     "unicorn/no-abusive-eslint-disable": 0,
     "unicorn/no-null": 0,
-    "unicorn/filename-case": [
-      "error",
-      {
-        "cases": {
-          "camelCase": true,
-          "kebabCase": true
-        }
-      }
-    ]
+    "unicorn/filename-case": "off"
   }
 }
