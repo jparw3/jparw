@@ -13,7 +13,8 @@ import {
   ReactElement,
   ReactFragment,
   ReactNode,
-  ReactPortal
+  ReactPortal,
+  useEffect
 } from 'react';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {

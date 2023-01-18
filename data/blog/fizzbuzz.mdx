@@ -1,40 +1,203 @@
 ---
-title: 'Solving the Fizz Buzz Challenge in C#'
-publishedAt: '2023-01-15'
+title: 'Solving the Fizzbuzz problem'
+publishedAt: '2023-01-18'
 summary: 'this is a testing post'
 tags: ['Challenge', 'Explanation']
 ---
 
-The Fizz Buzz challenge is a classic coding problem that tests a developer's ability to write clean and efficient code. The challenge is to write a program that prints the numbers from 1 to 100, but for multiples of 3, print "Fizz" instead of the number, and for multiples of 5, print "Buzz" instead of the number. For numbers that are multiples of both 3 and 5, the program should print "FizzBuzz".
+Fizz Buzz is a classic interview question which interviewers ask pretty often. It is a pretty hard problem to solve, but once you figure out the trick to solve the problem, it becomes very easy. It is very important to know how to solve this question because it is designed to help filter out the 99% candidates who can’t seem to program the way out of an interview.
 
-In this post, I will walk you through how I solved the Fizz Buzz challenge in C#.
+In this blog, I will show one way to solve this FizzBuzz question, but just know there might be various ways to solve this problem, but I will be showing the way I found easier for me and the one I recently used in an interview.
 
-## Step 1: Understand the Problem
+## The Question:
 
-Solving the Fizz Buzz Challenge in C#
+Write a program that console logs the numbers from 1- n, but for multiples of three print “fizz” instead of the number and for the multiples of five print “buzz”. For numbers which are multiples of both three and five print “fizzbuzz”.
 
-The Fizz Buzz challenge is a classic coding problem that tests a developer's ability to write clean and efficient code. The challenge is to write a program that prints the numbers from 1 to 100, but for multiples of 3, print "Fizz" instead of the number, and for multiples of 5, print "Buzz" instead of the number. For numbers that are multiples of both 3 and 5, the program should print "FizzBuzz".
+## Planning:
 
-In this post, I will walk you through how I solved the Fizz Buzz challenge in C#.
+Before starting to code the solution, it's important to plan how you're going to do so. So lets talk about what the problem actually is.
 
-## Step 1: Understand the Problem
+Let's write out the steps in a easier way to read.
 
-Before starting to code, it's important to understand the problem. In this case, we need to write a program that prints the numbers from 1 to 100, but with certain conditions.
+- print 1..100
+- print "Fizz" if divisible by 3
+- print "Buzz" if divisible by 5
+- print "FizzBuzz" if divisible by 3 and 5
 
-## Step 2: Plan the Solution
+We can see that we have 3 main conditions and when we have conditions we use a conditional statement, like 'if'. We can represent this as a flowchart.
 
-Once we understand the problem, the next step is to plan the solution. In this case, we need to write a loop that iterates through the numbers from 1 to 100. Within the loop, we need to check if the current number is a multiple of 3, 5, or both. Depending on the result, we need to print the corresponding output (Fizz, Buzz, or FizzBuzz).
+<Image
+  alt="Books section in Notion"
+  src={'/blog/fizzbuzz/flowchart.png'}
+  width={1672}
+  height={1309}
+/>
 
-## Step 3: Write the Code
+If you don't have the option of drawing a flow chart you can use pseudo code. That way you don't need to worry about syntax or boilerplates before you even know what you're going to do.
 
-Now that we have a plan, we can start writing the code.
+```txt
+loop 100 times (i)
+    if i / 3 & 5: print "FizzBuzz"
+    if i / 3: print "Fizz"
+    if i / 5: print "Buzz"
+    else: print i
+```
+
+When you break the problem down like this into small problems it becomes so much simpler. This is called **Decomposition**.
+
+Now that we having the planning all sorted, we can move on to actually coding the solution.
+
+## Coding
+
+During an interview they may let you choose a language to code in, other times the interviewer might make you use a certain language. The interview I had recently required this to be done in C#, so I'll do the same here.
+
+First we'll need to create a loop that will iterate 100 times.
+
+```cs
+for (int i = 1; i <= 100; i++) {
+
+}
+```
+
+As you're writing this code, it's important not to focus on getting it done quickly,but rather taking your time and make sure you fully understand your requirements before wasting your time writing a bunch of code you will have to correct later.
+
+It's also really important to think out loud and explain your decisions
+throughout the process of solving this, Even if what you're saying isn't totally correct, it's important for the interviewer to understand your
+problem solving process. Saying something is almost always better then not saying anything at all.
+
+<Warning type="info">
+  Practice talking while you code. It may be strange the first few times you do
+  it, but slowly overtime it will feel more natural. Follow the **ABC Rule**
+  which means **Always be chatting**
+</Warning>
+
+Next you'll need to create a few conditional statements that will line up with the ones you created is pseudo code earlier.
+
+The tricky thing about FizzBuzz is how to determine if a number is a multiple of another number. Luckily most languages have a **Modulo**, often referred to as the 'Remainder operator'. Instead of returning the result of the division, the modulo operation returns the whole number remainder. The modulus operator, written in most programming languages as % or mod.
+
+Here's an example of how to use Modulo
+
+```cs
+    9 % 3 == 0
+    // 9 divided by 3 equals 3, with a remainder of 0
+    10 % 3 == 1
+    // 10 divided by 3 equals 3, with a remainder of 1
+    11 % 3 == 2
+    // 11 divided by 3 equals 3, with a remainder of 2
+```
+
+```cs
+    9 % 3 == 0
+    // true
+    10 % 3 == 0
+    // false
+```
+
+This is pretty much is the line which is the trick to solving FizzBuzz problem.
+
+Now inside of our loop we can check if a number is a multiple of 3 and if it say, we can print "Fizz"
+
+```cs
+for (int i = 1; i <= 100; i++) {
+    if (i % 3 == 0)
+    {
+        Console.WriteLine("Fizz");
+    }
+}
+```
+
+We're checking if the remainder is equal to 0, if it is we can print "Fizz".
+Now we'll just need to check if the number is divisible by 5. However, since we have more then 1 condition, we'll need to use `if else`.
+
+```cs
+for (int i = 1; i <= 100; i++) {
+    if (i % 3 == 0)
+    {
+        Console.WriteLine("Fizz");
+    }
+    else if (i % 5 == 0)
+    {
+        Console.WriteLine("Buzz");
+    }
+}
+```
+
+That 2/3 conditions we need to do sorted now. For the last we need to check if the number is both divisible by 3 and 5. To do this we can use `&&`. This will allow us to check both conditions and if true, print "FizzBuzz"
+
+```cs
+for (int i = 1; i <= 100; i++) {
+    if (i % 3 == 0)
+    {
+        Console.WriteLine("Fizz");
+    }
+    else if (i % 5 == 0)
+    {
+        Console.WriteLine("Buzz");
+    }
+    else if (i % 3 == 0; && i % 5 == 0)
+    {
+        Console.WriteLine("FizzBuzz");
+    }
+}
+```
+
+Once that is sorted, we just need to print the number in between. This is very simple.
+
+```cs
+for (int i = 1; i <= 100; i++)
+{
+    if (i % 3 == 0)
+    {
+        Console.WriteLine("Fizz");
+    }
+    else if (i % 5 == 0)
+    {
+        Console.WriteLine("Buzz");
+    }
+    else if (i % 3 == 0 && i % 5 == 0)
+    {
+        Console.WriteLine("FizzBuzz");
+    }
+    else
+    {
+        Console.WriteLine(i);
+    }
+}
+```
+
+You may think that's all you need to do, if you run the code now you should get this output:
+
+```shell
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+Fizz
+16
+17
+...
+```
+
+This may look right at first glance. However, if you look at where the number 15 would be, it only says "Fizz", not "FizzBuzz". This is a common mistake that costs many people a job.
+
+The issue is that our code is printing Fizz before it can get the chance to check if i is a multiple of both 3 and 5. Luckily it's an easy fix. Just make it the first condition to be checked.
 
 ```cs
 for (int i = 1; i <= 100; i++)
 {
     if (i % 3 == 0 && i % 5 == 0)
     {
-        Console.WriteLine("FizzBuzz");
+        Console.WriteLine("Fizzbuzz");
     }
     else if (i % 3 == 0)
     {
@@ -51,8 +214,40 @@ for (int i = 1; i <= 100; i++)
 }
 ```
 
-In this code snippet, we use a for loop to iterate through the numbers from 1 to 100. Within the loop, we use the modulo operator (%) to check if the current number is a multiple of 3, 5, or both. If it is a multiple of 3 and 5, we print "FizzBuzz", if it's a multiple of 3 we print "Fizz" and if it's a multiple of 5 we print "Buzz", if it's not a multiple of 3 or 5 we print the number.
+Now if we run this code again, we should see that 15 now says 'FizzBuzz'
 
-##Conclusion
+```shell
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+Fizzbuzz
+16
+17
+...
+```
 
-The Fizz Buzz challenge is a great way to test your ability to write clean and efficient code. By understanding the problem, planning the solution, and writing the code, you can successfully solve the Fizz Buzz challenge in C#. This problem can also be solved using different approach, but the basic idea is to use a for loop and check for the multiple of 3 and 5.
+## Congratulations! It works! 🥳
+
+That's it! If this helped then you let me know on [twitter](https://twitter.com/jparw3).
+
+## Bonus
+
+If you want to take it 1 step further, instead of checking if i is a multiple of 3 and 5. Just check if i is a multiple of 15 as it's the lowest common multiple of 3 and 5.
+
+```cs
+if (i % 15 == 0)
+    {
+        Console.WriteLine("Fizzbuzz");
+    }
+```
