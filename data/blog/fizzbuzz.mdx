@@ -55,7 +55,8 @@ During an interview they may let you choose a language to code in, other times t
 First we'll need to create a loop that will iterate 100 times.
 
 ```cs
-for (int i = 1; i <= 100; i++) {
+for (int i = 1; i <= 100; i++) 
+{
 
 }
 ```
@@ -99,7 +100,8 @@ This is pretty much is the line which is the trick to solving FizzBuzz problem.
 Now inside of our loop we can check if a number is a multiple of 3 and if it say, we can print "Fizz"
 
 ```cs
-for (int i = 1; i <= 100; i++) {
+for (int i = 1; i <= 100; i++) 
+{
     if (i % 3 == 0)
     {
         Console.WriteLine("Fizz");
@@ -111,7 +113,8 @@ We're checking if the remainder is equal to 0, if it is we can print "Fizz".
 Now we'll just need to check if the number is divisible by 5. However, since we have more then 1 condition, we'll need to use `if else`.
 
 ```cs
-for (int i = 1; i <= 100; i++) {
+for (int i = 1; i <= 100; i++) 
+{
     if (i % 3 == 0)
     {
         Console.WriteLine("Fizz");
@@ -126,7 +129,8 @@ for (int i = 1; i <= 100; i++) {
 That 2/3 conditions we need to do sorted now. For the last we need to check if the number is both divisible by 3 and 5. To do this we can use `&&`. This will allow us to check both conditions and if true, print "FizzBuzz"
 
 ```cs
-for (int i = 1; i <= 100; i++) {
+for (int i = 1; i <= 100; i++)
+{
     if (i % 3 == 0)
     {
         Console.WriteLine("Fizz");
@@ -135,7 +139,7 @@ for (int i = 1; i <= 100; i++) {
     {
         Console.WriteLine("Buzz");
     }
-    else if (i % 3 == 0; && i % 5 == 0)
+    else if (i % 3 == 0 && i % 5 == 0)
     {
         Console.WriteLine("FizzBuzz");
     }
